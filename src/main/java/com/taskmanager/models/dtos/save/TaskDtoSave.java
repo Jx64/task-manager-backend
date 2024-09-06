@@ -18,9 +18,4 @@ public class TaskDtoSave {
     @NotBlank
     private String name;
     private String description;
-    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
-    private LocalDate deadline;
-    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
-    private LocalDate executionDate;
-    private String priority;
 }

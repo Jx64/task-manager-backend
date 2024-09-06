@@ -14,4 +14,5 @@ public interface TaskMapper {
     Task toTask(TaskDtoSend taskDtoSend);
 
     Task updateTask(TaskUpdateDto taskUpdateDto);
+
 }

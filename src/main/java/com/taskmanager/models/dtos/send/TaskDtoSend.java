@@ -15,9 +15,4 @@ public class TaskDtoSend {
     private Long id;
     private String name;
     private String description;
-    private LocalDate date;
-    private LocalDate deadline;
-    private LocalDate executionDate;
-    private String state;
-    private String priority;
 }

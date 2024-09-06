@@ -4,7 +4,6 @@ import com.taskmanager.models.dtos.save.TaskDtoSave;
 import com.taskmanager.models.dtos.save.TaskUpdateDto;
 import com.taskmanager.models.dtos.send.TaskDtoSend;
 import com.taskmanager.models.entities.Task;
-import com.taskmanager.models.enums.TasksState;
 import com.taskmanager.models.mappers.TaskMapper;
 import com.taskmanager.repositories.TaskRepository;
 import com.taskmanager.services.TaskService;
@@ -38,8 +37,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDtoSend save(TaskDtoSave taskDtoSave) {
         Task task = taskMapper.toTask(taskDtoSave);
-        task.setDate(LocalDate.now());
-        task.setState(TasksState.ACTIVE);
         return taskMapper.toTaskDtoSend(taskRepository.save(task));
     }
 
@@ -47,8 +44,6 @@ public class TaskServiceImpl implements TaskService {
     public TaskDtoSend update(Long id, TaskUpdateDto taskUpdateDto) {
         Optional<Task> task = taskRepository.findById(id);
         Task taskO = taskMapper.updateTask(taskUpdateDto);
-        taskO.setDate(LocalDate.now());
-        System.out.println(taskO.getDate());
         if(task.isEmpty()){
             return taskMapper.toTaskDtoSend(taskRepository.save(taskO));
         }
