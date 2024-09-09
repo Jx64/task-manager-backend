@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "tasks")
@@ -20,11 +22,13 @@ public class Task {
     @Column(nullable = false)
     private String name;
     private String description;
+    private LocalDate start_date;
+    private LocalDate end_date;
 
     //Relationships
 
 
     public Task updateTask(Task task){
-        return new Task(this.id, task.getName(), task.getDescription());
+        return new Task(this.id, task.getName(), task.getDescription(), task.getStart_date(), task.getEnd_date());
     }
 }

@@ -17,4 +17,8 @@ public class TaskUpdateDto {
     @NotBlank
     private String name;
     private String description;
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
+    private LocalDate start_date;
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
+    private LocalDate end_date;
 }
