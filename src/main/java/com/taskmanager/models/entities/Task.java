@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -26,9 +27,12 @@ public class Task {
     private LocalDate end_date;
 
     //Relationships
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Task updateTask(Task task){
-        return new Task(this.id, task.getName(), task.getDescription(), task.getStart_date(), task.getEnd_date());
+        return new Task(this.id, task.getName(), task.getDescription(),
+                task.getStart_date(), task.getEnd_date(), task.getUser());
     }
 }

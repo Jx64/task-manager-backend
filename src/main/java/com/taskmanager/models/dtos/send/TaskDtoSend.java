@@ -20,4 +20,5 @@ public class TaskDtoSend {
     private LocalDate start_date;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate end_date;
+    private String userName;
 }
