@@ -95,10 +95,14 @@ public class TaskController {
                     schema = @Schema(implementation = TaskDtoSave.class),
                     examples = @ExampleObject(name = "Ejemplo de como guardar una tarea",
                             value = "{\n" +
-                                    "  \"name\": \"hacer algo\",\n" +
-                                    "  \"description\": \"hay que hacer algo de la forma tal\",\n" +
+                                    "  \"name\": \"Programar Backend\",\n" +
+                                    "  \"description\": \"Hay que hacer el Backend\",\n" +
                                     "  \"start_date\": \"12/09/2024\",\n" +
-                                    "  \"end_date\": \"14/09/2024\"\n" +
+                                    "  \"end_date\": \"13/09/2024\",\n" +
+                                    "  \"status\": {\n" +
+                                    "    \"name\": \"To do\",\n" +
+                                    "    \"description\": \"la tarea esta creada\"\n" +
+                                    "  }\n" +
                                     "}",
                             description = "Json con los datos de registro de una tarea")
             ))
