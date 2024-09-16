@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +22,5 @@ public class TaskDtoSave {
     private LocalDate start_date;
     @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
     private LocalDate end_date;
+    private TaskStatusDtoSave status;
 }

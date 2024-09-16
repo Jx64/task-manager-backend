@@ -1,4 +1,4 @@
-package com.taskmanager.models.dtos.send;
+package com.taskmanager.models.dtos.save;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TaskStatusDtoSend {
-    private Long id;
+public class TaskStatusDtoSave {
     private String name;
-
+    private String description;
 }
-
-
