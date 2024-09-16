@@ -10,5 +10,5 @@ import java.util.List;
 
 
 public interface TaskStatusRepository extends JpaRepository<TaskStatus, Long> {
-
+    TaskStatus findByName(String name);
 }

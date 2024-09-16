@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
+    @Mappings(
+            @Mapping(target = "name", source = "userName")
+    )
     User toUser(UserDtoSave userDtoSave);
     @Mappings(
             @Mapping(target = "userName", source = "name")
