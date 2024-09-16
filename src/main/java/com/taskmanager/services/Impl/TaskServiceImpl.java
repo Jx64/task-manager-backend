@@ -15,7 +15,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -77,5 +79,13 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteAll() {
         taskRepository.deleteAll();
+    }
+
+    @Override
+    public List<TaskDtoSend> findTasksByStatusId(Long statusId) {
+        List<TaskDtoSend> tasksByStatus = taskRepository.findTasksByStatusId(statusId)
+                .stream().map(task -> this.taskMapper.toTaskDtoSend(task))
+                .collect(Collectors.toList());
+        return tasksByStatus;
     }
 }
