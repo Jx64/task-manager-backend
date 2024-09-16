@@ -182,10 +182,7 @@ public class TaskController {
     })
     @GetMapping("/status/{statusId}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<?> getTasksByStatusId(
-            @PathVariable Long statusId,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<?> getTasksByStatusId( @PathVariable Long statusId) {
         try {
             List<TaskDtoSend> tasksByStatus  = taskService.findTasksByStatusId(statusId);
             return ResponseEntity.ok(tasksByStatus);
