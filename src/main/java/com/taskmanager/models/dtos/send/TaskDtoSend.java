@@ -1,5 +1,6 @@
 package com.taskmanager.models.dtos.send;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,10 @@ public class TaskDtoSend {
     private Long id;
     private String name;
     private String description;
-    private String start_date;
-    private String end_date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate start_date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate end_date;
+    private String userName;
+    private TaskStatusDtoSend status;
 }

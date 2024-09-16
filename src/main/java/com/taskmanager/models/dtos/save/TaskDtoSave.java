@@ -22,4 +22,5 @@ public class TaskDtoSave {
     private LocalDate start_date;
     @JsonFormat(pattern = "dd/MM/yyyy", timezone = "GMT-5")
     private LocalDate end_date;
+    private TaskStatusDtoSave status;
 }
