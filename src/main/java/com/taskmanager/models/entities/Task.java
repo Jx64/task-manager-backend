@@ -31,8 +31,12 @@ public class Task {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private TaskStatus status;
+
     public Task updateTask(Task task){
         return new Task(this.id, task.getName(), task.getDescription(),
-                task.getStart_date(), task.getEnd_date(), task.getUser());
+                task.getStart_date(), task.getEnd_date(), task.getUser(), task.getStatus());
     }
 }

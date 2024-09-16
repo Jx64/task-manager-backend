@@ -21,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @Tag(name = "Tareas", description = "Recurso para gestionar las tareas en el sistema")
 @RestController
@@ -170,4 +171,27 @@ public class TaskController {
         taskService.deleteAll();
         return ResponseEntity.ok("All tasks deleted");
     }
+
+    @Operation(
+            summary = "Listar tareas por estado",
+            description = "Permite a los usuarios con rol USER y ADMIN obtener todas las tareas filtradas por el ID del estado",
+            tags = { "Get" })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = TaskDtoSend.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "400", content = { @Content(schema = @Schema(implementation = String.class), mediaType = "application/json") })
+    })
+    @GetMapping("/status/{statusId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<?> getTasksByStatusId(
+            @PathVariable Long statusId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        try {
+            List<TaskDtoSend> tasksByStatus  = taskService.findTasksByStatusId(statusId);
+            return ResponseEntity.ok(tasksByStatus);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
