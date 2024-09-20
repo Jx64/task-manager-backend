@@ -31,6 +31,7 @@ public class JwtUtils {
                 .claims(extraClaims)
                 .claim("id", user.getId())
                 .claim("email", user.getEmail())
+                .claim("name", user.getName())
                 .claim("roles", user.getRoles())
                 .claim("username", user.getUsername())
                 .subject(user.getEmail())
